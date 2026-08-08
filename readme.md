@@ -102,7 +102,7 @@ Fabryczna kość pamięci 1MB (SOIC-8) ogranicza przestrzeń na aktualizacje OTA
 ## ⚙️ Wymagane Ustawienia Kompilacji (Arduino IDE)
 
 *   **Płytka (Board):** `Generic ESP8266 Module`
-- Patrz załączony zrzut ekranu.
+- Patrz załączony zrzut ekranu- wersja 1Mb pamięci - przed wymianą.
 
 ## 📡 Pierwsze Uruchomienie i Konfiguracja
 
