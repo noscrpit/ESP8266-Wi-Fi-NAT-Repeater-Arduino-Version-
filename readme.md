@@ -80,8 +80,10 @@ Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**. Podłączenie 5V b
 ---
 
 ## 💾 Instrukcja Wymiany Pamięci Flash (Modyfikacja 4MB)
-Aby mieć możliwość dalszych modyfikacji wymień pamięc na większą, np 4Mb
+Aby mieć możliwość dalszych modyfikacji wymień pamięc na większą, np 4Mb.
+
 W wersji standartowej OTA działa na "styk" i może powodować niestabilności.
+
 Fabryczna kość pamięci 1MB (SOIC-8) ogranicza przestrzeń na aktualizacje OTA i pliki systemowe. Można ją zastąpić układem wylutowanym ze starej płyty głównej PC (np. kość BIOS serii **Winbond 25Q32 / 25Q64** pracująca na 3.3V).
 
 ### Procedura sprzętowa:
@@ -100,9 +102,7 @@ Fabryczna kość pamięci 1MB (SOIC-8) ogranicza przestrzeń na aktualizacje OTA
 ## ⚙️ Wymagane Ustawienia Kompilacji (Arduino IDE)
 
 *   **Płytka (Board):** `Generic ESP8266 Module`
-*   ** Procesor 160 Mhz
-*   **IwIP Variant:** `v2 Higher Bandwidth` *(Wymagane do działania translacji NAT)*
-*   **Erase Flash:** `All Flash Contents` *(Zalecane przy pierwszym wgrywaniu)*
+- Patrz załączony zrzut ekranu.
 
 ## 📡 Pierwsze Uruchomienie i Konfiguracja
 
@@ -152,12 +152,6 @@ Fabryczna kość pamięci 1MB (SOIC-8) ogranicza przestrzeń na aktualizacje OTA
 3.  Podłącz programator CH340 pod USB i kliknij **Wgraj**. Proces potrwa chwilę dłużej, ponieważ `esptool` całkowicie wymaże stary BIOS, nadpisze całą pamięć nowym kodem i sformatuje system plików LittleFS (2MB).
 
 ---
-
-## ⚙️ Wymagane Ustawienia Kompilacji (Arduino IDE)
-
-*   **Płytka (Board):** `Generic ESP8266 Module`
-*   **IwIP Variant:** `v2 Higher Bandwidth` *(Wymagane do działania translacji NAT)*
-*   **Erase Flash:** `All Flash Contents` *(Zalecane przy pierwszym wgrywaniu)*
 
 ## 📡 Pierwsze Uruchomienie i Konfiguracja
 
