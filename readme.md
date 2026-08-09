@@ -5,7 +5,6 @@ Projekt jest udostępniany w stanie "takim, jaki jest" na licencji
 GNU General Public License v3.0 (GPLv3). 
 
 Używasz go na własną odpowiedzialność.
-Starano się bardzo, aby program ten nic nie popsuł.
 
 Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie mikrokontrolera **ESP-01S (ESP8266)** w środowisku Arduino IDE. Urządzenie działa jako niezależny router z translacją adresów NAT, posiada wbudowany system pamięci nieulotnej oraz inteligentną architekturę samonaprawy połączenia.
 
