@@ -1,4 +1,11 @@
 # ESP8266 Wi-Fi NAT Repeater (Arduino Version)
+📄 Licencja
+
+Projekt jest udostępniany w stanie "takim, jaki jest" na licencji
+GNU General Public License v3.0 (GPLv3). 
+
+Używasz go na własną odpowiedzialność.
+Starano się bardzo, aby program ten nic nie popsuł.
 
 Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie mikrokontrolera **ESP-01S (ESP8266)** w środowisku Arduino IDE. Urządzenie działa jako niezależny router z translacją adresów NAT, posiada wbudowany system pamięci nieulotnej oraz inteligentną architekturę samonaprawy połączenia.
 
@@ -80,10 +87,8 @@ Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**. Podłączenie 5V b
 ---
 
 ## 💾 Instrukcja Wymiany Pamięci Flash (Modyfikacja 4MB)
-Aby mieć możliwość dalszych modyfikacji wymień pamięc na większą, np 4Mb.
-
-W wersji standartowej OTA działa na "styk" i może powodować niestabilności.
-
+Aby mieć możliwość dalszych modyfikacji i bezproblemowe OTA, wymień pamięc na większą, np 4Mb.
+W wersji standartowej OTA działa na "styk" i może ale nie musi powodować niestabilności.
 Fabryczna kość pamięci 1MB (SOIC-8) ogranicza przestrzeń na aktualizacje OTA i pliki systemowe. Można ją zastąpić układem wylutowanym ze starej płyty głównej PC (np. kość BIOS serii **Winbond 25Q32 / 25Q64** pracująca na 3.3V).
 
 ### Procedura sprzętowa:
@@ -102,7 +107,7 @@ Fabryczna kość pamięci 1MB (SOIC-8) ogranicza przestrzeń na aktualizacje OTA
 ## ⚙️ Wymagane Ustawienia Kompilacji (Arduino IDE)
 
 *   **Płytka (Board):** `Generic ESP8266 Module`
-- Patrz załączony zrzut ekranu- wersja 1Mb pamięci - przed wymianą.
+- Patrz załączony zrzut ekranu (Ustawienia.png) - wersja 1Mb pamięci - przed wymianą.
 
 ## 📡 Pierwsze Uruchomienie i Konfiguracja
 
@@ -135,46 +140,3 @@ masy (GND) |
 | **RST** | Reset sprzętowy | Pozostawić wolny | Pozostawić wolny |
 
 ---
-
-## 💾 Instrukcja Wymiany Pamięci Flash (Modyfikacja 4MB)
-
-Fabryczna kość pamięci 1MB (SOIC-8) ogranicza przestrzeń na aktualizacje OTA i pliki systemowe. Można ją zastąpić układem wylutowanym ze starej płyty głównej PC (np. kość BIOS serii **Winbond 25Q32 / 25Q64** pracująca na 3.3V).
-
-### Procedura sprzętowa:
-1.  Za pomocą stacji Hot-Air lub techniki "dużej kropli cyny" wylutuj oryginalną pamięć z ESP-01S.
-2.  Oczyść pady na płytce plecionką rozlutowniczą.
-3.  Wylutuj kość BIOS z płyty głównej (upewnij się, że to wersja 3.3V w obudowie SOIC-8). Jeśli obudowa jest nieco szersza (Wide 208mil), delikatnie podegnij nóżki układu do środka.
-4.  Wlutuj nową kość na ESP-01S zgodnie z kropką oznaczającą pin nr 1.
-
-### Pierwsze wgranie oprogramowania po wymianie kości:
-1.  W Arduino IDE wejdź w **Narzędzia (Tools) ➡️ Flash Size** i zmień wartość z `1MB` na **`4MB (FS:2MB OTA:~1019KB)`**.
-2.  Zewrzyj pin **GPIO0 do GND**.
-3.  Podłącz programator CH340 pod USB i kliknij **Wgraj**. Proces potrwa chwilę dłużej, ponieważ `esptool` całkowicie wymaże stary BIOS, nadpisze całą pamięć nowym kodem i sformatuje system plików LittleFS (2MB).
-
----
-
-## 📡 Pierwsze Uruchomienie i Konfiguracja
-
-1.  Po pomyślnym zflashowaniu odłącz pin **GPIO0 od masy (GND)**.
-2.  Zasil moduł i odczekaj około 10 sekund.
-3.  Wyszukaj na komputerze lub telefonie otwartą sieć Wi-Fi o nazwie: **`MyAP_Arduino`**.
-4.  Otwórz przeglądarkę i wejdź na adres: **`192.168.4.1`**.
-5.  Kliknij przycisk **🔍 Skanuj sieć**, wybierz swój domowy router z listy, wpisz hasło i kliknij **💾 Zapisz i Uruchom Repeater**.
-
-## 🔐 Bezprzewodowa Aktualizacja Oprogramowania (OTA)
-
-Od momentu pierwszego wgrania kablowego na nową pamięć, programator CH340 nie jest już potrzebny. Aby zaktualizować kod:
-
-1.  W Arduino IDE wybierz menu **Szkic ➡️ Eksportuj skompilowany program** (wygeneruje to plik `.bin` w folderze projektu).
-2.  Połącz się z siecią `MyAP_Arduino` i wejdź na stronę: **`192.168.4.1/update`**.
-3.  Wpisz dane logowania:
-    *   **Użytkownik:** `admin`
-    *   **Hasło:** `admin123`
-4.  Wskaż wygenerowany plik `.bin` i kliknij **🚀 Rozpocznij instalację**.
-5.  Pasek postępu wyświetli stan wgrywania. Po zakończeniu odliczanie (10s) poinformuje o restarcie urządzenia.
-
-## 📊 Ograniczenia Techniczne Układu (ESP-01S)
-
-*   **Przepustowość sieci:** maksymalnie ok. 4–5 Mb/s (ograniczenie procesora 160 MHz przy translacji pakietów NAT).
-*   **Pasmo radiowe:** wyłącznie 2.4 GHz (brak obsługi pasma 5 GHz oraz standardów Wi-Fi 6/7).
-*   **Maksymalna liczba klientów:** domyślnie zablokowana na maksymalnie 4 urządzenia jednocześnie w celu utrzymania stabilności pamięci RAM (80 KB).
