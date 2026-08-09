@@ -21,45 +21,6 @@ Urządzenie działa jako niezależny router z translacją adresów NAT, posiada 
 ## 🛠️ Specyfikacja Sprzętowa i Rozpiska Pinów
 
 Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**.
-**Podłączenie 5V bez regulatora trwale uszkodzi układ.**
-
-### Schemat Wyprowadzeń (Widok od góry, antena po lewej):
-```text
-  +-----------------------+
-
-  |  [ ANTENA PCB ]       |
-  |                       |
-  |  (GND)  [ ]   [ ] (TX)|
-  | (GPIO2) [ ]   [ ] (RX)|
-  | (GPIO0) [ ]   [ ] (EN)|
-  |  (3.3V) [ ]   [ ] (RST|
-  +-----------------------+
-```
-
-### Opis Pinów dla Trybu Pracy i Programowania:
-
-| Nazwa Pinu | Rola w układzie | Połączenie (Tryb Pracy) | Połączenie (Programowanie) |
-| :--- | :--- | :--- | :--- |
-| **VCC** | Zasilanie główne | Zasilacz 3.3V | 3.3V z programatora CH340 |
-| **GND** | Masa układu | Masa (GND) zasilacza | GND z programatora CH340 |
-| **EN / CH_PD**| Aktywacja układu | **Wymagane** zwarcie do 3.3V | **Wymagane** zwarcie do 3.3V |
-| **GPIO0** | Tryb rozruchu | Pozostawić wolny (High) | **Wymagane** zwarcie do # ESP8266 Wi-Fi NAT Repeater (Arduino Version)
-
-Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie mikrokontrolera **ESP-01S (ESP8266)** w środowisku Arduino IDE.
-Urządzenie działa jako niezależny router z translacją adresów NAT, posiada wbudowany system pamięci nieulotnej oraz inteligentną architekturę samonaprawy połączenia.
-
-## 🚀 Kluczowe Funkcje
-
-*   **Sprzętowy Routing NAT/NAPT:** Układ tworzy niezależną podsieć (`192.168.4.X`), izolując podłączone urządzenia od sieci głównej. Domowy router widzi repeater jako jednego klienta.
-*   **Auto-Channel Hopping (Automatyczny Przeskok):** Urządzenie stale monitoruje stan połączenia. Jeśli router główny zmieni kanał nadawania, ESP po 30 sekundach automatycznie przeskanuje eter, namierzy nową częstotliwość i przełączy swoje radio.
-*   **Trwały Zapis Konfiguracji (LittleFS):** Nazwa sieci (SSID) oraz hasło są trwale zapisywane w pamięci Flash. Po zaniku zasilania wzmacniacz automatycznie wznawia pracę bez potrzeby ponownej konfiguracji.
-*   **Wbudowany Serwer DHCP z Wtryskiem DNS:** Serwer DHCP automatycznie konfiguruje klientów sieci `MyAP_Arduino`, wymuszając stabilny serwer DNS Google (`8.8.8.8`). Rozwiązuje to problem błędów typu *Nie odnaleziono serwera*.
-*   **Nowoczesny Panel Aktualizacji OTA przez WWW:** Bezprzewodowa aktualizacja oprogramowania (`/update`) zabezpieczona protokołem *HTTP Basic Auth*. Panel zawiera dynamiczny pasek postępu (0-100%), animację ładowania oraz licznik restartu.
-*   **Zintegrowany Watchdog:** W przypadku krytycznej, długotrwałej utraty sygnału (powyżej 3 minut), sprzętowy licznik wywołuje twardy reset układu (`ESP.restart()`) w celu samonaprawy.
-
-## 🛠️ Specyfikacja Sprzętowa i Rozpiska Pinów
-
-Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**.
 Podłączenie 5V bez regulatora trwale uszkodzi układ.
 
 ### Schemat Wyprowadzeń (Widok od góry, antena po lewej):
@@ -137,9 +98,5 @@ Od momentu pierwszego wgrania kablowego na nową pamięć, programator CH340 nie
 *   **Przepustowość sieci:** maksymalnie ok. 4–5 Mb/s (ograniczenie procesora 160 MHz przy translacji pakietów NAT).
 *   **Pasmo radiowe:** wyłącznie 2.4 GHz (brak obsługi pasma 5 GHz oraz standardów Wi-Fi 6/7).
 *   **Maksymalna liczba klientów:** domyślnie zablokowana na maksymalnie 4 urządzenia jednocześnie w celu utrzymania stabilności pamięci RAM (80 KB).
-masy (GND) |
-| **GPIO2** | Dioda wbudowana | Pozostawić wolny | Pozostawić wolny |
-| **RX / TX** | Linie szeregowe | Pozostawić wolne | Podłączyć krzyżowo do TX/RX CH340 |
-| **RST** | Reset sprzętowy | Pozostawić wolny | Pozostawić wolny |
 
 ---
