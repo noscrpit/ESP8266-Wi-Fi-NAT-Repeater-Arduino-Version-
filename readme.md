@@ -6,7 +6,8 @@ GNU General Public License v3.0 (GPLv3).
 
 Używasz go na własną odpowiedzialność.
 
-Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie mikrokontrolera **ESP-01S (ESP8266)** w środowisku Arduino IDE. Urządzenie działa jako niezależny router z translacją adresów NAT, posiada wbudowany system pamięci nieulotnej oraz inteligentną architekturę samonaprawy połączenia.
+Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie mikrokontrolera **ESP-01S (ESP8266)** w środowisku Arduino IDE.
+Urządzenie działa jako niezależny router z translacją adresów NAT, posiada wbudowany system pamięci nieulotnej oraz inteligentną architekturę samonaprawy połączenia.
 
 ## 🚀 Kluczowe Funkcje
 
@@ -19,7 +20,8 @@ Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie 
 
 ## 🛠️ Specyfikacja Sprzętowa i Rozpiska Pinów
 
-Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**. Podłączenie 5V bez regulatora trwale uszkodzi układ.
+Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**.
+**Podłączenie 5V bez regulatora trwale uszkodzi układ.**
 
 ### Schemat Wyprowadzeń (Widok od góry, antena po lewej):
 ```text
@@ -43,7 +45,8 @@ Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**. Podłączenie 5V b
 | **EN / CH_PD**| Aktywacja układu | **Wymagane** zwarcie do 3.3V | **Wymagane** zwarcie do 3.3V |
 | **GPIO0** | Tryb rozruchu | Pozostawić wolny (High) | **Wymagane** zwarcie do # ESP8266 Wi-Fi NAT Repeater (Arduino Version)
 
-Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie mikrokontrolera **ESP-01S (ESP8266)** w środowisku Arduino IDE. Urządzenie działa jako niezależny router z translacją adresów NAT, posiada wbudowany system pamięci nieulotnej oraz inteligentną architekturę samonaprawy połączenia.
+Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie mikrokontrolera **ESP-01S (ESP8266)** w środowisku Arduino IDE.
+Urządzenie działa jako niezależny router z translacją adresów NAT, posiada wbudowany system pamięci nieulotnej oraz inteligentną architekturę samonaprawy połączenia.
 
 ## 🚀 Kluczowe Funkcje
 
@@ -56,7 +59,8 @@ Autonomiczny, bezobsługowy wzmacniacz sieci Wi-Fi (2.4 GHz) zbudowany na bazie 
 
 ## 🛠️ Specyfikacja Sprzętowa i Rozpiska Pinów
 
-Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**. Podłączenie 5V bez regulatora trwale uszkodzi układ.
+Moduł ESP-01S zasilany jest wyłącznie napięciem **3.3V**.
+Podłączenie 5V bez regulatora trwale uszkodzi układ.
 
 ### Schemat Wyprowadzeń (Widok od góry, antena po lewej):
 ```text
